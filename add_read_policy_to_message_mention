@@ -1,0 +1,10 @@
+create policy "Enable read access for all users"
+on "public"."message_mentions"
+as permissive
+for select
+to public
+using (true);
+
+
+
+

@@ -692,6 +692,14 @@ CREATE POLICY "Enable read access for all users" ON "public"."chatbots" FOR SELE
 
 
 
+CREATE POLICY "Enable read access for all users" ON "public"."message_mentions" FOR SELECT USING (true);
+
+
+
+CREATE POLICY "Enable read access for all users" ON "public"."message_reactions" FOR SELECT USING (true);
+
+
+
 CREATE POLICY "Enable read access for all users" ON "public"."message_read" FOR SELECT USING ((EXISTS ( SELECT 1
    FROM "public"."messages"
   WHERE (("messages"."id" = "message_read"."message_id") AND "public"."is_room_member"("auth"."uid"(), "messages"."room_id")))));
@@ -699,10 +707,6 @@ CREATE POLICY "Enable read access for all users" ON "public"."message_read" FOR 
 
 
 CREATE POLICY "Enable read access for all users" ON "public"."room_members" FOR SELECT USING (true);
-
-
-
-CREATE POLICY "Enable read access for all users" ON "public"."rooms" FOR SELECT USING (true);
 
 
 
